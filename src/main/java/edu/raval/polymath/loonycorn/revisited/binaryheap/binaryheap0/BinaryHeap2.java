@@ -21,7 +21,7 @@ public class BinaryHeap2<T extends Comparable<T>> implements IBinaryHeap<T> {
   @Override
   public void put(T node) {
     base.add(node);
-    siftUp(getParentIndex(base.size() - 1));
+    siftUp(base.size() - 1);
   }
 
   @Override
@@ -47,30 +47,10 @@ public class BinaryHeap2<T extends Comparable<T>> implements IBinaryHeap<T> {
     return first;
   }
 
-  private void siftUp(int myIndex) {
-    if (myIndex == -1) {
-      return;
-    }
-    int myLeftChildIndex = getLeftChildIndex(myIndex);
-    int myRightChildIndex = getRightChildIndex(myIndex);
 
-    if (myLeftChildIndex != -1 && myRightChildIndex != -1) {
-      T myLeftChildValue = getLeftChild(myIndex);
-      T myRightChildValue = getRightChild(myIndex);
-      if (shouldBeSwaped(myLeftChildValue, myRightChildValue)
-          && swapIfNecessary(myIndex,
-          myLeftChildIndex)) {
-        siftUp(getParentIndex(myIndex));
-      } else if (swapIfNecessary(myIndex, myRightChildIndex)) {
-        siftUp(getParentIndex(myIndex));
-      }
-    } else if (myLeftChildIndex != -1
-        && myRightChildIndex == -1
-        && swapIfNecessary(myIndex, myLeftChildIndex)) {
-      siftUp(getParentIndex(myIndex));
-    } else if (myLeftChildIndex == -1
-        && myRightChildIndex != -1
-        && swapIfNecessary(myIndex, myRightChildIndex)) {
+  private void siftUp(int myIndex){
+    if(myIndex > 0 &&
+        swapIfNecessary(getParentIndex(myIndex), myIndex)){
       siftUp(getParentIndex(myIndex));
     }
   }
