@@ -7,7 +7,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class BinaryHeapSortTest {
-  private final static int size = 500_000 * 10;
+  private final static int size = 500_000 * 100;
 
   private Integer[] createData(){
     List<Integer> list = new ArrayList<>();
@@ -19,7 +19,6 @@ public class BinaryHeapSortTest {
 
   @Test
   public void sort() throws Exception{
-    Thread.sleep(20*1000);
 
 
     Integer[] input = createData();

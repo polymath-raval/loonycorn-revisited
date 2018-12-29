@@ -6,4 +6,6 @@ public interface IBinaryHeap<T extends Comparable<T>> {
   T peek();
   T pop();
   boolean isEmpty();
+  T reverseNaturedElement();
+  int size();
 }

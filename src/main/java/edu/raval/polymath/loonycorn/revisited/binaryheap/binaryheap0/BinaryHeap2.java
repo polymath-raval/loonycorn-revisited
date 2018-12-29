@@ -14,6 +14,23 @@ public class BinaryHeap2<T extends Comparable<T>> implements IBinaryHeap<T> {
   }
 
   @Override
+  public int size() {
+    return base.size();
+  }
+
+  @Override
+  public T reverseNaturedElement() {
+    int lastParent = getParentIndex(base.size() - 1);
+    T result=peek();
+    for (int i = lastParent + 1; i < base.size(); i++) {
+      if(shouldBeSwaped(result, base.get(i))){
+        result = base.get(i);
+      }
+    }
+    return result;
+  }
+
+  @Override
   public boolean isEmpty() {
     return base.isEmpty();
   }
@@ -48,9 +65,9 @@ public class BinaryHeap2<T extends Comparable<T>> implements IBinaryHeap<T> {
   }
 
 
-  private void siftUp(int myIndex){
-    if(myIndex > 0 &&
-        swapIfNecessary(getParentIndex(myIndex), myIndex)){
+  private void siftUp(int myIndex) {
+    if (myIndex > 0 &&
+        swapIfNecessary(getParentIndex(myIndex), myIndex)) {
       siftUp(getParentIndex(myIndex));
     }
   }

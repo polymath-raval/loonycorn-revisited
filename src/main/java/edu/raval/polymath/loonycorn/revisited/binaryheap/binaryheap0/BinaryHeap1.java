@@ -19,6 +19,16 @@ public class BinaryHeap1<T extends Comparable<T>> implements IBinaryHeap<T> {
   }
 
   @Override
+  public int size() {
+    return base.size();
+  }
+
+  @Override
+  public T reverseNaturedElement() {
+    return null;
+  }
+
+  @Override
   public boolean isEmpty() {
     return base.isEmpty();
   }
