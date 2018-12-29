@@ -1,8 +1,12 @@
 package edu.raval.polymath.loonycorn.revisited.tree.tree0;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import org.apache.commons.collections4.ListUtils;
+import org.apache.commons.collections4.SetUtils;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -92,6 +96,27 @@ public class BinarySearchTreeTest {
     Assert.assertTrue(ListUtils.isEqualList(expected, actual));
   }
 
+  @Test
+  public void searchTree() {
+    int size = 500_000;
+    BigDecimal minimum = new BigDecimal(10_000);
+    BigDecimal maximum = new BigDecimal(20_000);
+    Set<BigDecimal> expected = new HashSet<>();
+
+    BinarySearchTree<BigDecimal> bst = new BinarySearchTree<>();
+    for (int i = 1; i < size; i++) {
+      BigDecimal value = new BigDecimal(Math.random() * 100_000);
+      if (value.compareTo(minimum) >= 0 && value.compareTo(maximum) <= 0) {
+        expected.add(value);
+      }
+      bst.add(value);
+    }
+
+    Set<BigDecimal> actual = new HashSet<>(bst.search(minimum, maximum));
+    Assert.assertTrue(SetUtils.isEqualSet(expected, actual));
+  }
+
+
   private BinarySearchTree<Integer> bst(int size) {
     BinarySearchTree<Integer> bst = new BinarySearchTree<>();
     for (int i = 1; i < size; i++) {
@@ -99,4 +124,6 @@ public class BinarySearchTreeTest {
     }
     return bst;
   }
+
+
 }

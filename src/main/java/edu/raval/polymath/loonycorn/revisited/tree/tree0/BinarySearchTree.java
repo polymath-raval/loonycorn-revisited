@@ -1,5 +1,6 @@
 package edu.raval.polymath.loonycorn.revisited.tree.tree0;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BinarySearchTree<T extends Comparable<T>> {
@@ -19,6 +20,29 @@ public class BinarySearchTree<T extends Comparable<T>> {
       return null;
     } else {
       return search(root, value);
+    }
+  }
+
+  public List<T> search(T minimum, T maximum){
+    List<T> result = new ArrayList<>();
+    search(result, getRoot(), minimum, maximum);
+    return result;
+  }
+
+  public void search(List<T> result, Node<T> node, T minimum, T maximum){
+    if(node == null){
+      return;
+    }
+
+    if(node.getValue().compareTo(minimum) >= 0
+        && node.getValue().compareTo(maximum) <= 0){
+      result.add(node.getValue());
+      search(result, node.getLeft(), minimum, maximum);
+      search(result, node.getRight(), minimum, maximum);
+    } else if(node.getValue().compareTo(minimum) < 0){
+      search(result, node.getRight(), minimum, maximum);
+    } else if(node.getValue().compareTo(maximum) > 0){
+      search(result, node.getLeft(), minimum, maximum);
     }
   }
 
