@@ -1,9 +1,11 @@
 package edu.raval.polymath.loonycorn.revisited.sort.sort0;
 
-public class SortAlgo1 implements ISort{
+import java.util.Arrays;
+
+public class SelectionSort implements ISort{
 
 
-  public void sort(int[] input) {
+  public int[] sort(int[] input) {
     for (int i = 0; i < input.length; i++) {
       for (int j = i; j < input.length; j++) {
         if (isSwapRequired(input, i, j)) {
@@ -11,6 +13,7 @@ public class SortAlgo1 implements ISort{
         }
       }
     }
+    return input;
   }
 
   private boolean isSwapRequired(int[] input, int i, int j){

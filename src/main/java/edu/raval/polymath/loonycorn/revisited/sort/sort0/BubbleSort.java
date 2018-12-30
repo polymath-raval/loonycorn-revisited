@@ -1,24 +1,25 @@
 package edu.raval.polymath.loonycorn.revisited.sort.sort0;
 
-public class SortAlgo2 implements ISort {
+import java.util.Arrays;
+
+public class BubbleSort implements ISort {
 
 
-  public void sort(int[] input) {
-    int count = 0;
+  public int[] sort(int[] input) {
     for (int i = 0; i < input.length; i++) {
       boolean wasSwapped = false;
-      for (int j = 0; j < input.length - 1; j++) {
-        count++;
-        if (isSwapRequired(input, j, j + 1)) {
-          swap(input, j, j + 1);
+      for (int j = input.length-1; j > i; j--) {
+        if (isSwapRequired(input, j - 1,j)) {
+          swap(input, j - 1, j);
           wasSwapped = true;
         }
       }
+      //System.out.println(i + " *** " + Arrays.toString(input));
       if(!wasSwapped){
         break;
       }
     }
-    System.out.println("Count " + count);
+    return input;
   }
 
   private boolean isSwapRequired(int[] input, int i, int j) {
