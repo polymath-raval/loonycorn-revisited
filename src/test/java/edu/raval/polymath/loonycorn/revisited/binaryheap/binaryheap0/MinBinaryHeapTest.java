@@ -1,9 +1,7 @@
 package edu.raval.polymath.loonycorn.revisited.binaryheap.binaryheap0;
 
-import com.sun.source.tree.AssertTree;
 import edu.raval.polymath.loonycorn.revisited.binaryheap.binaryheap0.BinaryHeap.Type;
 import java.math.BigDecimal;
-import org.apache.commons.lang3.math.NumberUtils;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,7 +20,7 @@ public class MinBinaryHeapTest {
     priorityQueue.peek();
   }
 
-  @Test(expected = EmptyHeapException.class)
+  @Test(expected = EmptfyHeapException.class)
   public void popEmpty() {
     priorityQueue.pop();
   }
